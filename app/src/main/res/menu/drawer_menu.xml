@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:title="Gender">
+        <menu>
+            <item
+                android:id="@+id/home"
+                android:icon="@drawable/ic_baseline_home_24"
+                android:title="@string/Home_menu" />
+            <item
+                android:id="@+id/Log_out"
+                android:icon="@drawable/ic_baseline_login_24"
+                android:title="@string/Logout" />
+        </menu>
+    </item>
+    <item android:title="Theme Setting">
+        <menu>
+            <item
+                android:id="@+id/switch1"
+                android:icon="@drawable/ic_baseline_nights_stay_24"
+                android:title="@string/Dark_Mode_menu"
+                app:actionViewClass="android.widget.Switch"
+                />
+        </menu>
+    </item>
+</menu>

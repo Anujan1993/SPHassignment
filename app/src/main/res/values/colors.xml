@@ -1,0 +1,20 @@
+<!--?xml version="1.0" encoding="UTF-8"?-->
+<resources>
+    <color name="primaryColor">#005C4D</color>
+    <color name="primaryLightColor">#489A88</color>
+    <color name="primaryDarkColor">#003727</color>
+    <color name="primaryColorD">#013A31</color>
+    <color name="primaryLightColorD">#336A5E</color>
+    <color name="primaryDarkColorD">#03100C</color>
+    <color name="secondaryColor">#00796b</color>
+    <color name="secondaryLightColor">#48a999</color>
+    <color name="secondaryDarkColor">#004c40</color>
+    <color name="primaryTextColor">#ffffff</color>
+    <color name="secondaryTextColor">#ffffff</color>
+    <color name="secondaryCardTextColor">#ECECEC</color>
+    <color name="secondaryTextColorDark">#302F2F</color>
+    <color name="primaryDarkTextColor">#222222</color>
+    <color name="primaryDarkBagColor">#191919</color>
+    <color name="secondaryDarkTextColor">#2C2C2C</color>
+    <color name="colorTitle">#000000</color>
+</resources>
