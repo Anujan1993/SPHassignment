@@ -56,6 +56,8 @@
         <item name="backgroundColor">@color/primaryDarkBagColor</item>
         <item name="cardBackground">@color/secondaryDarkTextColor</item>
         <item name="tintColor">@color/primaryTextColor</item>
+        <item name="tint">@color/primaryTextColor</item>
+        <item name="titleTextColor">@color/primaryTextColor</item>
         <item name="tintColorOpp">@color/primaryTextColor</item>
         <item name="tintColorForImage">@color/primaryTextColor</item>
         <item name="cardConnerColor">@color/primaryDarkColor</item>

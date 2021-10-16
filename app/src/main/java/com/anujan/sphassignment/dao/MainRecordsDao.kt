@@ -13,5 +13,5 @@ interface MainRecordsDao {
     fun insert(mainRecords: MainRecords): Long
 
     @Query("DELETE FROM MainRecords")
-    fun deleteAll(): Int
+    suspend fun deleteAll(): Int
 }

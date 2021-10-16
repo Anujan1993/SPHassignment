@@ -23,11 +23,11 @@ import com.anujan.sphassignment.app.SPHApplication
 import com.anujan.sphassignment.databinding.FragmentHomeBinding
 import com.anujan.sphassignment.entity.MainRecords
 import com.anujan.sphassignment.response.Records
+import com.anujan.sphassignment.singlerecord.SingleRecordActivity
+import com.anujan.sphassignment.util.AppConstant
 import com.anujan.sphassignment.util.Status
 import kotlinx.android.synthetic.main.dialog_box_layout.view.*
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 import javax.inject.Inject
 
 
@@ -42,6 +42,7 @@ class HomeFragment : Fragment() {
     private lateinit var progress: ProgressBar
     private var records: List<Records> = ArrayList()
     protected val scope = CoroutineScope(Dispatchers.Default)
+    protected val scopeMain = CoroutineScope(Dispatchers.Main)
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -89,15 +90,13 @@ class HomeFragment : Fragment() {
 
                     when (it.status) {
                         Status.SUCCESS -> {
-                            recyclerView.visibility = View.VISIBLE
-                            progress.visibility = View.GONE
-                            records = resource.data?.result!!.records
-                            retrieveList(records)
-                            deleteData()
-                            for (record in records){
-                                setDataBase(MainRecords(record._id,record.volume_of_mobile_data,record.quarter))
+                            val newR = resource.data?.result!!.records
+                            scope.launch {
+                                async {  deleteData()}.await()
+                                store(newR)
                             }
                         }
+
                         Status.ERROR -> {
                             recyclerView.visibility = View.VISIBLE
                             progress.visibility = View.GONE
@@ -112,10 +111,35 @@ class HomeFragment : Fragment() {
             })
         }
     }
-    private fun deleteData(){
-        scope.launch {
-           val intM = homeViewModel.deleteData()
+    private fun store(newR:List<Records>){
+        val newRecords: ArrayList<Records> = ArrayList()
+        for (record in newR) {
+            if (record._id > 22) {
+                setDataBase(
+                    MainRecords(
+                        record._id,
+                        record.volume_of_mobile_data,
+                        record.quarter
+                    )
+                )
+                newRecords.add(
+                    Records(
+                        record.volume_of_mobile_data,
+                        record.quarter,
+                        record._id
+                    )
+                )
+            }
         }
+        scopeMain.launch {
+            records = newRecords
+            retrieveList(records)
+            recyclerView.visibility = View.VISIBLE
+            progress.visibility = View.GONE
+        }
+    }
+    private suspend fun deleteData(): Int {
+        return homeViewModel.deleteData()
     }
 
     private fun getListDataRoom(){
@@ -158,7 +182,11 @@ class HomeFragment : Fragment() {
 
     private val onUserItemSelected = object : MobileDataAdapter.Callback {
         override fun onItemClicked(records: Records) {
-
+            with(records) {
+                startActivity(Intent(requireContext(), SingleRecordActivity::class.java).apply {
+                    putExtra(AppConstant.QUEAR, records.quarter )
+                })
+            }
         }
     }
     private fun dialogBoxFunction(title:String,message:String){

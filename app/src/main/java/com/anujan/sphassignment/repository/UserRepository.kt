@@ -4,8 +4,10 @@ import android.content.SharedPreferences
 import androidx.lifecycle.MutableLiveData
 import com.anujan.sphassignment.dao.AppUserDao
 import com.anujan.sphassignment.dao.MainRecordsDao
+import com.anujan.sphassignment.dao.RecordsRoomDao
 import com.anujan.sphassignment.entity.AppUser
 import com.anujan.sphassignment.entity.MainRecords
+import com.anujan.sphassignment.entity.RecordsRoom
 import com.anujan.sphassignment.util.loginSharedPrefState
 import com.anujan.sphassignment.util.Result
 import kotlinx.coroutines.Dispatchers
@@ -15,6 +17,7 @@ import javax.inject.Inject
 class UserRepository @Inject constructor(
     var userDao: AppUserDao,
     var mainRecordsDao: MainRecordsDao,
+    var recordsDao: RecordsRoomDao,
     private val sharedPref: SharedPreferences
 ) {
 
@@ -52,7 +55,7 @@ class UserRepository @Inject constructor(
         return registerResult
     }
 
-    fun deleteList(): Int {
+    suspend fun deleteList(): Int {
         return mainRecordsDao.deleteAll()
     }
 
@@ -62,6 +65,18 @@ class UserRepository @Inject constructor(
 
     fun getListData(): List<MainRecords>? {
         return mainRecordsDao.getListOfMainRecords()
+    }
+
+    suspend fun deleteRecord(year:String): Int {
+        return recordsDao.deleteRecord(year)
+    }
+
+    fun saveRecordData(recordsRoom: RecordsRoom): Long {
+        return recordsDao.insertRecord(recordsRoom)
+    }
+
+    fun getRecordData(year: String):List<RecordsRoom>? {
+        return recordsDao.getListOfRecords(year)
     }
 
 }

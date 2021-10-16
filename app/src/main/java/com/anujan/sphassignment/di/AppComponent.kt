@@ -4,6 +4,7 @@ import com.anujan.sphassignment.app.InitActivity
 import com.anujan.sphassignment.home.HomeFragment
 import com.anujan.sphassignment.login.LoginActivity
 import com.anujan.sphassignment.register.RegisterActivity
+import com.anujan.sphassignment.singlerecord.SingleRecordActivity
 import com.anujan.sphassignment.ui.BaseActivity
 import com.anujan.sphassignment.ui.LauncherActivity
 import com.anujan.sphassignment.ui.MainActivity
@@ -20,4 +21,5 @@ interface AppComponent {
     fun inject(launcherActivity: LauncherActivity)
     fun inject(initActivity: InitActivity)
     fun inject(baseActivity: BaseActivity)
+    fun inject(singleRecordActivity: SingleRecordActivity)
 }

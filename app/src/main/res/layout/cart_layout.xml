@@ -54,36 +54,64 @@
                     android:paddingRight="12dp"
                     tools:ignore="RtlSymmetry">
 
-                    <TextView
-                        android:id="@+id/nameOf"
+                    <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
-                        android:layout_marginBottom="5dp"
-                        android:singleLine="true"
-                        android:text="@{records.volume_of_mobile_data}"
-                        android:textColor="?attr/tintColorOpp"
-                        android:textSize="16sp"
-                        tools:text="@string/User_Name" />
+                        android:layout_height="match_parent">
 
-                    <TextView
-                        android:id="@+id/emailA"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:singleLine="true"
-                        android:text="@{records.quarter}"
-                        android:textSize="10dp"
-                        tools:text="@string/Companey_Name" />
+                        <TextView
+                            android:id="@+id/textView6"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:textColor="?attr/tintColorOpp"
+                            android:textSize="@dimen/cardVolMData"
+                            android:text="@string/volume_of_mobile_data"
+                            card_view:layout_constraintBottom_toBottomOf="@+id/volume_of_mobile_data"
+                            card_view:layout_constraintStart_toStartOf="parent"
+                            card_view:layout_constraintTop_toTopOf="@+id/volume_of_mobile_data" />
 
-                    <TextView
-                        android:id="@+id/comName"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:singleLine="true"
-                        android:textSize="8dp"
-                        tools:text="@string/Contact_Number" />
+                        <TextView
+                            android:id="@+id/quarter"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:singleLine="true"
+                            android:text="@{records.quarter}"
+                            android:textColor="?attr/tintColorOpp"
+                            android:textSize="@dimen/cardQuarter"
+                            card_view:layout_constraintEnd_toEndOf="@+id/volume_of_mobile_data"
+                            card_view:layout_constraintStart_toStartOf="@+id/volume_of_mobile_data"
+                            card_view:layout_constraintTop_toBottomOf="@+id/volume_of_mobile_data"
+                            tools:text="@string/quarter" />
+
+                        <TextView
+                            android:id="@+id/volume_of_mobile_data"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="24dp"
+                            android:layout_marginEnd="16dp"
+                            android:singleLine="true"
+                            android:text="@{records.volume_of_mobile_data}"
+                            android:textColor="?attr/tintColorOpp"
+                            android:textSize="@dimen/cardVolMData"
+                            card_view:layout_constraintEnd_toEndOf="parent"
+                            card_view:layout_constraintStart_toEndOf="@+id/textView6"
+                            card_view:layout_constraintTop_toTopOf="parent"
+                            tools:text="@string/volume_of_mobile_data" />
+
+                        <TextView
+                            android:id="@+id/textView7"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="@string/quarter"
+                            android:textColor="?attr/tintColorOpp"
+                            android:textSize="@dimen/cardQuarter"
+                            card_view:layout_constraintBottom_toBottomOf="@+id/quarter"
+                            card_view:layout_constraintEnd_toEndOf="@+id/textView6"
+                            card_view:layout_constraintStart_toStartOf="@+id/textView6"
+                            card_view:layout_constraintTop_toTopOf="@+id/quarter" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
 
                 </LinearLayout>
 

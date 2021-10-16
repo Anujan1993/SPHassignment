@@ -6,6 +6,7 @@ import androidx.room.Room
 import com.anujan.sphassignment.app.SPHApplication
 import com.anujan.sphassignment.dao.AppUserDao
 import com.anujan.sphassignment.dao.MainRecordsDao
+import com.anujan.sphassignment.dao.RecordsRoomDao
 import com.anujan.sphassignment.util.AppDatabase
 import com.anujan.sphassignment.util.EndPoints
 import com.anujan.sphassignment.util.SharedPreferencesData
@@ -45,5 +46,11 @@ open class AppModule(var context: SPHApplication) {
     @Provides
     open fun providesMainRecordsDao(database: AppDatabase): MainRecordsDao {
         return database.mainRecordsDao()
+    }
+
+    @Singleton
+    @Provides
+    open fun providesRecordsRoomDao(database: AppDatabase): RecordsRoomDao {
+        return database.recordsRoomDao()
     }
 }
