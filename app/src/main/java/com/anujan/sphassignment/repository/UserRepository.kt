@@ -1,6 +1,7 @@
 package com.anujan.sphassignment.repository
 
 import android.content.SharedPreferences
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.anujan.sphassignment.dao.AppUserDao
 import com.anujan.sphassignment.dao.MainRecordsDao
@@ -21,15 +22,15 @@ class UserRepository @Inject constructor(
     private val sharedPref: SharedPreferences
 ) {
 
-    suspend fun login(email: String, passwordHash: String): MutableLiveData<Result<AppUser>> {
-        val result = MutableLiveData<Result<AppUser>>()
+    suspend fun login(email: String, passwordHash: String): Result<AppUser>{
+        var result : Result<AppUser>
         withContext(Dispatchers.IO) {
             val user = userDao.findByUserNameAndPassword(email, passwordHash)
             if (user != null) {
                 sharedPref.loginSharedPrefState(true)
-                result.postValue(Result.Success(user))
+                result= Result.Success(user)
             } else {
-                result.postValue(Result.Error(Exception("User not exist!")))
+                result = Result.Error(Exception("User not exist!"))
             }
         }
         return result
@@ -41,15 +42,15 @@ class UserRepository @Inject constructor(
         phone: String,
         country: String,
         passwordHash: String
-    ): MutableLiveData<Result<String>> {
-        val registerResult = MutableLiveData<Result<String>>()
+    ): Result<String> {
+        var registerResult : Result<String>
         withContext(Dispatchers.IO) {
             try {
                 userDao.insert(AppUser(0, name, phone, country, passwordHash, email))
-                registerResult.postValue(Result.Success("Registration Success"))
+                registerResult = Result.Success("Registration Success")
             }
             catch (exception : Exception){
-                registerResult.postValue(Result.Error(Exception("email id already exist!")))
+                registerResult = Result.Error(Exception("email id already exist!"))
             }
         }
         return registerResult

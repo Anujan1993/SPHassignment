@@ -40,8 +40,7 @@ class LoginViewModel @Inject constructor(
             else -> {
                 val passwordHash: String = hashAndSavePasswordHash(password)
                 viewModelScope.launch {
-                    val result2 = userRepository.login(email, passwordHash)
-                    _result.value = result2.value
+                    _result.value = userRepository.login(email, passwordHash)
                 }
             }
         }

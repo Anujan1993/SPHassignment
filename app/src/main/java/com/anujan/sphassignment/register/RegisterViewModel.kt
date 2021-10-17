@@ -26,17 +26,12 @@ class RegisterViewModel @Inject constructor(
     var country: String? = null
 
     fun initRegister(){
-        val name = nameObservable.text
-        val email = emailObservable.text
-        val phone = phoneObservable.text
-        val conformation = conformPasswordObservable.text
-        val password = passwordObservable.text
         register(
-            name.toString(),
-            email.toString(),
-            phone.toString(),
-            conformation.toString(),
-            password.toString(),
+            nameObservable.text.toString(),
+            emailObservable.text.toString(),
+            phoneObservable.text.toString(),
+            conformPasswordObservable.text.toString(),
+            passwordObservable.text.toString(),
             country.toString())
     }
 
@@ -70,7 +65,7 @@ class RegisterViewModel @Inject constructor(
                             country,
                             passwordHash
                         )
-                        _result.value = result2.value
+                        _result.value = result2
                     }
                 } else {
                     _error.value = ErrorObject.PASSWORD_NOT_MATCH
