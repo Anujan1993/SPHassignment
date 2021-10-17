@@ -37,7 +37,7 @@ class HomeViewModel @Inject constructor(
     fun getListData():List<MainRecords>? {
         return userRepository.getListData()
     }
-    suspend fun deleteData():Int{
+    fun deleteData():Int{
         return userRepository.deleteList()
     }
 
@@ -49,7 +49,7 @@ class HomeViewModel @Inject constructor(
     fun getRecordData(year:String):List<RecordsRoom>? {
         return  userRepository.getRecordData(year)
     }
-    suspend fun deleteRecordData(year: String):Int{
+    fun deleteRecordData(year: String):Int{
         return userRepository.deleteRecord(year)
     }
     fun saveRecordData(records: RecordsRoom):Long{

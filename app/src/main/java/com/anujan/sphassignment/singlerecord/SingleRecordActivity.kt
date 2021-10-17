@@ -173,7 +173,7 @@ class SingleRecordActivity : AppCompatActivity(), GestureDetector.OnGestureListe
     private fun saveDataRoom(recordsRoom: RecordsRoom){
         val returnVal = homeViewModel.saveRecordData(recordsRoom)
     }
-    private suspend fun deleteDataRoom(year:String){
+    private fun deleteDataRoom(year:String){
             val returnVal = homeViewModel.deleteRecordData(year)
     }
     private fun getDataRoom(){

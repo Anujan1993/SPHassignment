@@ -138,7 +138,7 @@ class HomeFragment : Fragment() {
             progress.visibility = View.GONE
         }
     }
-    private suspend fun deleteData(): Int {
+    private fun deleteData(): Int {
         return homeViewModel.deleteData()
     }
 

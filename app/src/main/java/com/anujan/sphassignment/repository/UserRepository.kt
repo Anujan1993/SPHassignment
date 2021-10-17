@@ -55,7 +55,7 @@ class UserRepository @Inject constructor(
         return registerResult
     }
 
-    suspend fun deleteList(): Int {
+    fun deleteList(): Int {
         return mainRecordsDao.deleteAll()
     }
 
@@ -67,7 +67,7 @@ class UserRepository @Inject constructor(
         return mainRecordsDao.getListOfMainRecords()
     }
 
-    suspend fun deleteRecord(year:String): Int {
+    fun deleteRecord(year:String): Int {
         return recordsDao.deleteRecord(year)
     }
 

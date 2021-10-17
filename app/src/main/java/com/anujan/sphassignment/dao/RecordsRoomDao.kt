@@ -17,5 +17,5 @@ interface RecordsRoomDao {
 
 
     @Query("DELETE FROM RecordsRoom WHERE quarter LIKE :year || '%'")
-    suspend fun deleteRecord(year: String): Int
+    fun deleteRecord(year: String): Int
 }
