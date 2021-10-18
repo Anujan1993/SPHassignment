@@ -4,15 +4,15 @@
 2   This App is geting mobile data from the API, (By using retrofit).<br>
 3	  List all mobile data by year on the card view.<br>
 4	  This Application have Dark mode and light mode<br>
-5   This Application have 4 Viewmodels (HomeViewModel,SharedViewModel,LoginViewModel and RegisterViewModel)
-6   HomeViewModel and SharedViewModel are Unit test coverage 100% and LoginViewModel and RegisterViewModel are Unit test coverage above 85%
-5   If you click one year it navigate to that year Details screen and it have all quarter data of that year.<br>
-6	  In single moblie data have viewpager so you can swap left and right to see the quarter data.<br>
-7   All data having caching so this application will work on offline also 
-8	  On the main view I use drawable navigation bar for logout and dark moad change<br>
-9   Full application is created using #MVVM Architecture and Live Data<br>
-10  used technologies #Android, #Kotlin, #Coroutine, #Dagger 2, #RetroFit,#Android-Room, #Junit and #Mockito
-11  I followed #material-design principles in android
+5   This Application have 4 Viewmodels (HomeViewModel,SharedViewModel,LoginViewModel and RegisterViewModel).<br>
+6   HomeViewModel and SharedViewModel are Unit test coverage 100% and LoginViewModel and RegisterViewModel are Unit test coverage above 85%.<br>
+7   If you click one year it navigate to that year Details screen and it have all quarter data of that year.<br>
+8	  In single moblie data have viewpager so you can swap left and right to see the quarter data.<br>
+9   All data having caching so this application will work on offline also 
+10	On the main view I use drawable navigation bar for logout and dark moad change<br>
+11  Full application is created using #MVVM Architecture and Live Data<br>
+12  used technologies #Android, #Kotlin, #Coroutine, #Dagger 2, #RetroFit,#Android-Room, #Junit and #Mockito
+13  I followed #material-design principles in android
 
 <table>
   <tr>
